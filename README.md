@@ -51,3 +51,45 @@ References:
 - Camunda Documentation : 
     (https://docs.camunda.org/)https://4513465.fs1.hubspotusercontent-na1.net/hubfs/4513465/EN-Camunda-Compared-to-Alternatives-2024.pdf
 
+
+
+
+
+
+### Changes in UPI Payment Gateway
+
+	* Daily Limit on balance check 
+        Daily balance check via UPI limited to 50 times per day(per app).
+	* Limit on Account Listing API 
+        UPI apps can call the "List Accounting" API (to show linked accounts) only 25 times/day per usage.
+	* Failed Transaction retry limit 
+        If a upi payment fails only 3 retry per transaction. It will be restricted during peak hours
+	* AutoPay Time Slot Enforced
+        UPI Auto pay will be carried out in fixed time windows, Mostly non peak hours.
+	* API Rate Controls: Banks and Payment Service provides must set control on 
+		TPS(Transaction/sec) 
+		Velocity(frequency of apis)
+        Ensuring rate limit is applied on client side
+	* Streamlining refund and chargable rules
+	* UPI Aggregator Charges (Back-end only)
+		Payment Aggregator now needs to payback small charges (This may impact processing fees)
+
+- Objective
+
+    The changes are implemented by the National Payments Corporation of India (NPCI) to enhance the stability and reliability of the UPI ecosystem. These measures are aimed at reducing congestion during peak hours, ensuring fair usage of resources, and improving the overall user experience.
+
+-Technical Implementation
+
+    Implement rate limiting on the UPI APIs to control the number of requests made by users and applications. This involves setting limits on the number of requests per user, per application, or globally across the system. The rate limit can be enforced using various techniques such as token buckets, leaky buckets, or fixed window counters.
+    The rate limit is implemented to control the number of requests made to the UPI APIs. This is done to prevent abuse and ensure fair usage among all users. The rate limit can be applied at various levels, including per user, per application, or globally across the system.
+
+- Technical Achievements
+    * Less congestion during peak hours
+    * Less API calls
+    * Less load on servers
+    * Less data transfer
+    * Less processing time
+    * Less latency in transactions
+    * Less server replicas 
+    * Reduces cost of infrastructure
+    * Reduces downtime
